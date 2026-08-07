@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都至拉萨 G318 川藏南线自驾指南</title>
+    <style>
+        :root {
+            --primary-color: #2c5e3b;
+            --secondary-color: #d27932;
+            --bg-color: #f7f9f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0 0 20px 0;
+        }
+
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .stats-bar span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 主图样式 (新增) */
+        .hero-image-container {
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            display: block;
+            margin: 0 auto;
+            /* 增加一个细微的边框，让图片与背景更有层次感 */
+            border: 4px solid white; 
+        }
+
+        /* 路段概览 */
+        .route-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-top: 4px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        /* 节点时间轴 */
+        .timeline {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .timeline h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .node-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .node-item {
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 15px;
+            background: #fdfbf7;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .node-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .node-alt {
+            font-size: 0.85rem;
+            color: white;
+            background: var(--secondary-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .node-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* 指南与干货 */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tip-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .tip-card h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .tip-card ul {
+            padding-left: 20px;
+            color: var(--text-light);
+        }
+
+        .tip-card li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-text {
+            color: #d63031;
+            font-weight: bold;
+        }
+
+        /* 底部寄语 */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .node-grid { grid-template-columns: 1fr; }
+            .hero-image-container { margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 头部信息 -->
+    <header>
+        <h1>成都至拉萨 G318 川藏南线自驾指南</h1>
+        <p>中国人的景观大道 · 一生必走一次的朝圣之路</p>
+        <div class="stats-bar">
+            <span>🛣️ 全长: 约2200余公里</span>
+            <span>🏔️ 特点: 一山有四季，十里不同天</span>
+            <span>🌲 地貌: 平原、丘陵、河谷、雪山、草原、冰川、原始森林、峡谷、海子</span>
+        </div>
+    </header>
+
+    <!-- 插入主图 (新增) -->
+    <div class="hero-image-container">
+        <img src="G318.png" alt="G318 川藏南线路线及指南示意图" class="hero-image">
+    </div>
+
+    <!-- 路线分段 -->
+    <div class="route-sections">
+        <div class="section-card">
+            <h3>第一段：从都市到高原的缓冲</h3>
+            <p><strong>区间：</strong>成都 - 康定</p>
+            <p><strong>特征：</strong>平稳缓冲，逐渐适应海拔</p>
+            <p><strong>里程约：</strong>330公里 | <strong>建议用时：</strong>1-2天</p>
+        </div>
+        <div class="section-card" style="border-top-color: var(--primary-color);">
+            <h3>第二段：翻山越岭与绝美风光</h3>
+            <p><strong>区间：</strong>康定 - 林芝</p>
+            <p><strong>特征：</strong>核心路段，风景极致，挑战与美景并存</p>
+            <p><strong>里程约：</strong>1240公里 | <strong>建议用时：</strong>4-6天</p>
+        </div>
+        <div class="section-card">
+            <h3>第三段：西藏江南与最美高速</h3>
+            <p><strong>区间：</strong>林芝 - 拉萨</p>
+            <p><strong>特征：</strong>平缓高速，风景旖旎，轻松抵达圣城</p>
+            <p><strong>里程约：</strong>630公里 | <strong>建议用时：</strong>1-2天</p>
+        </div>
+    </div>
+
+    <!-- 核心路线节点 -->
+    <div class="timeline">
+        <h2>📍 核心路线节点 (由东向西)</h2>
+        <div class="node-grid">
+            <div class="node-item">
+                <span class="node-title">成都 (起点)</span><span class="node-alt">约 512m</span>
+                <div class="node-desc">全面检查车辆，准备物资，从容出发。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">雅安</span><span class="node-alt">约 1000m</span>
+                <div class="node-desc">雨城，进入川西藏地的门户。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">二郎山隧道</span>
+                <div class="node-desc">穿过隧道后，地貌剧变，进入横断山区腹地。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">泸定</span><span class="node-alt">约 1330m</span>
+                <div class="node-desc">大渡河，体会历史沉淀的泸定桥。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">康定</span><span class="node-alt">约 2500m</span>
+                <div class="node-desc">《康定情歌》故里。<strong>建议第一晚住宿地</strong>，适应海拔。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">折多山</span><span class="node-alt">约 4200m</span>
+                <div class="node-desc">康巴第一关，入藏第一座雪山，注意增添衣物。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">新都桥</span><span class="node-alt">约 3300m</span>
+                <div class="node-desc">摄影天堂，光影之城。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">理塘</span><span class="node-alt">约 4014m</span>
+                <div class="node-desc">世界高城，勒通古镇。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">姊妹湖</span><span class="node-alt">约 4685m</span>
+                <div class="node-desc">湖水湛蓝，雪山倒映。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">怒江七十二拐</span><span class="node-alt">3100-4658m</span>
+                <div class="node-desc">天路十八弯，险峻壮观。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">然乌湖</span><span class="node-alt">约 3850m</span>
+                <div class="node-desc">高原明珠，湖光山色。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">米堆冰川</span><span class="node-alt">约 4600m</span>
+                <div class="node-desc">中国最美冰川之一。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">林芝</span><span class="node-alt">约 3100m</span>
+                <div class="node-desc">西藏江南，气候温润，植被茂盛。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">色季拉山口</span><span class="node-alt">约 4728m</span>
+                <div class="node-desc">观南迦巴瓦峰最佳地点之一。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">林拉高速</span>
+                <div class="node-desc">全长约391公里，国内最美高原高速之一。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">工布江达</span><span class="node-alt">约 3330m</span>
+                <div class="node-desc">沿尼洋河前行。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">米拉山隧道</span><span class="node-alt">约 4750m</span>
+                <div class="node-desc">全天候隧道，翻越米拉山。</div>
+            </div>
+            <div class="node-item">
+                <span class="node-title">墨竹工卡</span><span class="node-alt">约 3880m</span>
+                <div class="node-desc">城市建筑逐渐增多。</div>
+            </div>
+            <div class="node-item" style="background: #e8f4eb; border-color: var(--primary-color);">
+                <span class="node-title">拉萨 (终点)</span><span class="node-alt">约 3650m</span>
+                <div class="node-desc">圣城拉萨，布达拉宫。旅途圆满！</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 旅游指导干货 -->
+    <div class="tips-grid">
+        <div class="tip-card">
+            <h3>🚗 1. 车辆要求</h3>
+            <ul>
+                <li><strong>车型建议：</strong>常规家用轿车、SUV、新能源车，只要车况正常，都能走完 318。不必盲目换越野车。</li>
+                <li><strong>驾驶技巧：</strong>控制车速，弯道不占道，不超速，山路弯长坡陡，但全程铺装路面。</li>
+                <li><strong>出发前准备：</strong>在成都全面检查车辆（刹车、轮胎、油液等）。</li>
+            </ul>
+        </div>
+        <div class="tip-card">
+            <h3>💊 2. 预防应对高反</h3>
+            <ul>
+                <li><strong>阶梯式上升：</strong>第一晚建议住在康定（海拔约2500米），给身体适应过程。</li>
+                <li><strong>行为规范：</strong><span class="highlight-text">不熬夜，不饮酒，不洗热水澡</span>；在垭口等地段，切忌奔跑跳跃。</li>
+                <li><strong>物资准备：</strong>备好抗高反物资、氧气瓶、常备药品。充足饮水和高热量零食。</li>
+                <li><strong>防寒保暖：</strong>高原气候多变，注意保暖，防止感冒。</li>
+            </ul>
+        </div>
+        <div class="tip-card">
+            <h3>🧘 3. 行前心态</h3>
+            <ul>
+                <li>318不是用来“征服”的，而是用来遇见、感受和治愈的。</li>
+                <li>放下浮躁，放慢节奏。</li>
+                <li>带着敬畏之心上路。</li>
+                <li><strong>安全永远是第一位的。</strong></li>
+            </ul>
+        </div>
+        <div class="tip-card">
+            <h3>💡 4. 其他实用建议</h3>
+            <ul>
+                <li>关注天气和路况，避开雨雪和塌方高发期（6-9月为最佳季节）。</li>
+                <li>尊重当地风俗习惯，保护环境。</li>
+                <li>沿途加油站点有限，<strong>建议油量低于半箱及时加油</strong>。</li>
+                <li>带好身份证、驾驶证等证件。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        祝您在 G318 川藏南线上，翻越绝美高山，跨过壮丽江河<br>
+        最终遇见最好的风景，也遇见最自由的自己！一路平安！❤️
+    </footer>
+</div>
+
+</body>
+</html>
